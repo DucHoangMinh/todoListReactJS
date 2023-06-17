@@ -20,8 +20,8 @@ class App extends Component {
         return (
             <div className="container">
                 <Routes>
-                    <Route path="/home/" element={<Home />} />
                     <Route path="/home/add" element={<AddTask />} />
+                    <Route path="/home" element={<Home />} />
                 </Routes>
             </div>
         );

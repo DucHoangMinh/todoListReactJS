@@ -18,4 +18,12 @@ userDataRoute.route('/add').post(function (req, res) {
         });
 });
 
+userDataRoute.get('/tasklist/:slug', function (req, res) {
+    userDataListModel
+        .find({ owner: req.params.slug })
+        .lean()
+        .then((userdatalist) => res.json(userdatalist))
+        .catch((err) => console.log('error : ' + err));
+});
+
 module.exports = userDataRoute;

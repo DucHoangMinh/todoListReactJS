@@ -22,6 +22,10 @@ let userDataList = new Schema(
         note: {
             type: String,
         },
+        finish: {
+            type: Boolean,
+            default: false,
+        },
         photoURL: {
             type: String,
             default: '',
