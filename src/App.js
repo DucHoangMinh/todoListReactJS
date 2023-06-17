@@ -9,6 +9,7 @@ import Login from './components/login/login.component';
 import { Routes, Route, Link } from 'react-router-dom';
 
 import AddTask from './components/mainProgram/addTask.component';
+import Home from './components/mainProgram/home.component';
 
 function handleLogOut() {
     localStorage.removeItem('userMail');
@@ -19,6 +20,7 @@ class App extends Component {
         return (
             <div className="container">
                 <Routes>
+                    <Route path="/home/" element={<Home />} />
                     <Route path="/home/add" element={<AddTask />} />
                 </Routes>
             </div>

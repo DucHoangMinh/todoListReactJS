@@ -4,8 +4,8 @@ const { useState } = require('react');
 function home() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [taskList, setTaskList] = useState([]);
-    axios.get('');
+    // axios.get('');
 
-    return <div></div>;
+    return <div>Đây là trang chủ</div>;
 }
-module.exports = home;
+export default home;
