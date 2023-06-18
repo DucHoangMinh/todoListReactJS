@@ -25,5 +25,25 @@ userDataRoute.get('/tasklist/:slug', function (req, res) {
         .then((userdatalist) => res.json(userdatalist))
         .catch((err) => console.log('error : ' + err));
 });
-
+userDataRoute.get('/detail/:slug', function (req, res) {
+    userDataListModel
+        .findOne({ slug: req.params.slug })
+        .lean()
+        .then((detailData) => res.json(detailData))
+        .catch();
+});
+//Xử lý đưa về trạng thái đã hoàn thành
+userDataRoute.put('/update/finish/:slug', function (req, res) {
+    userDataListModel
+        .updateOne({ slug: req.params.slug }, { finish: true })
+        .then()
+        .catch((err) => console.log(err));
+});
+//Xử lý xóa nhiệm vụ
+userDataRoute.get('/delete/:slug', function (req, res) {
+    userDataListModel
+        .deleteOne({ slug: req.params.slug })
+        .then()
+        .catch((err) => console.log(err));
+});
 module.exports = userDataRoute;

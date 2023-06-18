@@ -6,6 +6,7 @@ import { Container } from 'react-bootstrap';
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './components/login/login.component';
+import DetailTask from './components/mainProgram/detailTask.component';
 import { Routes, Route, Link } from 'react-router-dom';
 
 import AddTask from './components/mainProgram/addTask.component';
@@ -22,6 +23,7 @@ class App extends Component {
                 <Routes>
                     <Route path="/home/add" element={<AddTask />} />
                     <Route path="/home" element={<Home />} />
+                    <Route path="/home/detail/:slug" element={<DetailTask />} />
                 </Routes>
             </div>
         );
