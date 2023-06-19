@@ -39,6 +39,22 @@ userDataRoute.put('/update/finish/:slug', function (req, res) {
         .then()
         .catch((err) => console.log(err));
 });
+//Xử lý update nhiệm vụ
+userDataRoute.put('/update/:slug', function (req, res) {
+    userDataListModel
+        .updateOne(
+            { slug: req.params.slug },
+            {
+                name: req.body.name,
+                description: req.body.description,
+                taskType: req.body.taskType,
+                expireDay: req.body.expireDay,
+                note: req.body.note,
+            },
+        )
+        .then()
+        .catch((error) => console.log(error));
+});
 //Xử lý xóa nhiệm vụ
 userDataRoute.get('/delete/:slug', function (req, res) {
     userDataListModel

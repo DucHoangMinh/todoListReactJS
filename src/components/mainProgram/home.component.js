@@ -84,6 +84,7 @@ function home() {
                 console.log(err);
             });
     }, []);
+    //Sắp xếp lại các danh sách theo thứ tự ngày tháng
     if (taskList.length > 1) {
         taskList.sort(function (a, b) {
             return new Date(a.expireDay) - new Date(b.expireDay);
@@ -102,7 +103,9 @@ function home() {
     var finishedTask = taskList.filter(function (taskItem) {
         return taskItem.finish == true;
     });
-
+    window.onload = function () {
+        const updateButton = document.getElementsByClassName('update-btn');
+    };
     return (
         <div>
             <ul class="nav nav-tabs mt-4 mb-4">
@@ -113,7 +116,7 @@ function home() {
                 </li>
                 <li class="nav-item" onClick={() => setListState(2)}>
                     <a class="nav-link" aria-current="page" href="#">
-                        Danh sách việc chưa hoàn thành
+                        Danh sách việc cũ chưa hoàn thành
                     </a>
                 </li>
                 <li class="nav-item" onClick={() => setListState(3)}>
@@ -140,11 +143,18 @@ function home() {
                             >
                                 Xem chi tiết
                             </Link>
-                            <a href="#" class={`btn btn-primary  ${style['primary-button']}`}>
+                            <Link
+                                to={'/home/update/' + data.slug}
+                                //Nếu ở chỗ danh sách việc sắp tới thì mới hiển thị nút này
+                                class={`btn ${listState === 1 ? '' : 'd-none'} btn-primary update-btn  ${
+                                    style['primary-button']
+                                }`}
+                            >
                                 Chỉnh sửa chi tiết
-                            </a>
+                            </Link>
                             <Button
-                                class={`btn btn-primary ${style['primary-button']}`}
+                                //Nếu ở danh sách những việc đã hoàn thành thì sẽ không hiển thị nút này nữa
+                                class={`btn btn-primary ${listState === 3 ? 'd-none' : ''} ${style['primary-button']}`}
                                 onClick={() => handleMarkFinish(data)}
                             >
                                 Đánh dấu đã hoàn thành

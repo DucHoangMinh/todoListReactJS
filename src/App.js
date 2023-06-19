@@ -11,6 +11,7 @@ import { Routes, Route, Link } from 'react-router-dom';
 
 import AddTask from './components/mainProgram/addTask.component';
 import Home from './components/mainProgram/home.component';
+import Update from './components/mainProgram/update.component';
 
 function handleLogOut() {
     localStorage.removeItem('userMail');
@@ -24,6 +25,7 @@ class App extends Component {
                     <Route path="/home/add" element={<AddTask />} />
                     <Route path="/home" element={<Home />} />
                     <Route path="/home/detail/:slug" element={<DetailTask />} />
+                    <Route path="/home/update/:slug" element={<Update />} />
                 </Routes>
             </div>
         );
