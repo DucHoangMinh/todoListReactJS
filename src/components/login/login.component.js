@@ -13,11 +13,11 @@ function login() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [letSignIn, setLetSignIn] = useState(false);
     function handleSubmit() {
-        if (email == '') {
-            setLogInMessage('Tài khoản không được để trống !!!');
+        if (email == '' || password == '') {
+            setLogInMessage('Tài khoản và mật khẩu không được để trống !!!');
         } else {
             setLogInMessage('');
-            fetch('')
+            fetch('http://localhost:4000/userinfor')
                 .then(function (response) {
                     return response.json();
                 })
@@ -91,7 +91,9 @@ function login() {
                                                         Đăng nhập
                                                     </button>
                                                 </div>
-                                                <label className="text-danger">{logInMessage}</label>
+                                                <label style={{ paddingLeft: '17px' }} className="text-danger">
+                                                    {logInMessage}
+                                                </label>
                                             </form>
                                         </div>
                                     </div>

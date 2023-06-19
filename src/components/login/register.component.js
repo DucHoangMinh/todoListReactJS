@@ -39,7 +39,7 @@ function register() {
 
     function handleOnChangeEmail(e) {
         setRegisterMessage('');
-        var api = 'https://my-simple-crud-hlan.vercel.app/userinfor';
+        var api = 'http://localhost:4000/userinfor';
         fetch(api)
             .then((reponse) => reponse.json())
             .then((userInfor) => {
@@ -92,17 +92,12 @@ function register() {
                 email: userMail,
                 password: userPass,
             };
-            axios
-                .post('https://my-simple-crud-hlan.vercel.app/userinfor/add', newUserInfor)
-                .then((res) => console.log(res.data));
+            axios.post('http://localhost:4000/userinfor/add', newUserInfor).then((window.location.href = '/home'));
             setUserName('');
             setReUserPass('');
             setUserPass('');
             setUserMail('');
             localStorage.setItem('userMail', userMail);
-            setTimeout(function () {
-                window.location.href = '/home';
-            }, 500);
         } else {
             setRegisterMessage('Vui lòng nhập đầy đủ các trường !!!');
         }
@@ -176,9 +171,7 @@ function register() {
                                                             name="password"
                                                             onChange={handleOnChangePass}
                                                         />
-                                                        <label className={style.statusMessage}>
-                                                            {inputPassMessage}
-                                                        </label>
+                                                        <label className="text-danger">{inputPassMessage}</label>
                                                     </div>
                                                 </div>
 
@@ -203,7 +196,7 @@ function register() {
 
                                                 <div className="form-check d-flex justify-content-center mb-5">
                                                     <label className="form-check-label" for="form2Example3">
-                                                        Đã có tài khoản ? <Link to={'/'}>Đăng nhập</Link>
+                                                        Đã có tài khoản ? <Link to={'/login'}>Đăng nhập</Link>
                                                     </label>
                                                 </div>
                                                 <div className=" mx-4 mb-3 mb-lg-4">
