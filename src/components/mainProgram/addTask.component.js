@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { InputGroup, Form, Button, Modal } from 'react-bootstrap';
 import axios from 'axios';
+import style from '../../scss/add.module.scss';
 
 function dateToString(date) {
     var month = String(date.getMonth() + 1).padStart(2, '0'); // Lấy tháng và thêm số 0 vào đầu nếu cần
@@ -87,8 +88,8 @@ function addTask() {
         }, 500);
     }
     return (
-        <div className="add-task-form mt-5">
-            <h1 class="display-4 mb-4">Thêm công việc vào danh sách quản lý</h1>
+        <div className="add-task-form mt-5 container">
+            <h1 class={`display-4 mb-4 ${style.addHeading}`}>Thêm công việc vào danh sách quản lý</h1>
             <div className="mb-4">
                 <Form.Label htmlFor="basic-url">Nhập vào tên công việc của bạn</Form.Label>
                 <Form.Control

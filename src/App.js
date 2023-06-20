@@ -17,7 +17,7 @@ function handleLogOut() {
 class App extends Component {
     render() {
         return (
-            <div className="container">
+            <div className="">
                 <Routes>
                     <Route path="/home/add" element={<AddTask />} />
                     <Route path="/home" element={<Home />} />

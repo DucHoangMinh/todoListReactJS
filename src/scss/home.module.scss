@@ -4,7 +4,79 @@
 .delete-button {
     float: right !important;
 }
-.add-task-button {
+.taskListSelect {
+    display: flex;
+    list-style: none;
+    font-size: 18px;
+    text-align: center;
+    align-items: center;
+    padding-left: 0px;
     position: relative;
+}
+.taskListSelect li {
+    padding: 8px 12px;
+    margin-right: 12px;
+    border: 2px solid #4b8c61;
+    border-radius: 8px;
+}
+.nowDisplay {
+    color: #fff;
+    background-color: #4b8c61;
+}
+.taskListSelect li a {
+}
+.add-task-button {
+    text-decoration: none;
+    color: #000;
     right: 0px !important;
+    font-size: 18px;
+    position: absolute;
+    padding: 8px 12px;
+    right: 0px;
+    font-weight: 600;
+    // color: #12ad2a;
+    color: #4b8c61;
+    cursor: pointer;
+}
+.add-task-button:hover {
+    opacity: 0.8;
+}
+.add-task-button span {
+    margin-right: 12px;
+}
+.home-header {
+    width: 100%;
+    position: relative;
+    margin-bottom: 100px;
+}
+.backgroudWrapper {
+    width: 100%;
+}
+.backgroundImage {
+    object-fit: contain;
+    width: 100%;
+}
+.titleWrapper {
+    position: absolute;
+    left: 45%;
+    text-align: center;
+    top: 60%;
+}
+.titleWrapper h3 {
+    font-weight: 700;
+    font-family: roboto, helvetica, arial, sans-serif;
+    font-size: 48px;
+}
+.titleWrapper p {
+    font-family: roboto, helvetica, arial, sans-serif;
+    font-size: 24px;
+}
+.primary-button {
+    color: #fff;
+    background-color: #aad187;
+}
+.primary-button:hover {
+    color: #fff;
+    background-color: #aad187;
+    opacity: 0.8;
 }
