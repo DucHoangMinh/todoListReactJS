@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 import axios from 'axios';
+import style from '../../scss/update.module.scss';
 
 function dateToString(date) {
     var month = String(date.getMonth() + 1).padStart(2, '0'); // Lấy tháng và thêm số 0 vào đầu nếu cần
@@ -97,8 +98,8 @@ function update() {
         modalMess.includes('Quay về trang chủ') ? handleBack() : handleUpdate();
     }
     return (
-        <div className="add-task-form mt-5">
-            <h4 class="display-4 mb-4">Chỉnh sửa thông tin nhiệm vụ "{recentName}"</h4>
+        <div className="add-task-form mt-5 container">
+            <h4 className={`display-4 mb-4 ${style.updateHeading}`}>Chỉnh sửa thông tin nhiệm vụ "{recentName}"</h4>
             <div className="mb-4">
                 <Form.Label htmlFor="basic-url">Nhập vào tên công việc của bạn</Form.Label>
                 <Form.Control
@@ -156,10 +157,10 @@ function update() {
                 />
             </div>
             <div className="d-flex justify-content-between">
-                <Button variant="success" onClick={handleSendBack}>
+                <Button variant="primary" onClick={handleSendBack}>
                     Quay về trang chủ
                 </Button>
-                <Button variant="primary" onClick={handleSendModify}>
+                <Button variant="success" onClick={handleSendModify}>
                     Gửi chỉnh sửa
                 </Button>
             </div>

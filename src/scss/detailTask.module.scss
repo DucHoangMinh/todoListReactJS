@@ -1,0 +1,37 @@
+.cardHeader {
+    background-color: #b5d19c;
+    text-transform: uppercase;
+}
+.detailButton {
+    background-color: #a1ce7a;
+    color: #fff;
+    margin-right: 8px;
+}
+.detailButton:hover {
+    color: #fff;
+    background-color: #7ece39;
+    opacity: 0.8;
+}
+.delButton {
+    float: right;
+}
+.detailInfor {
+}
+.cardBody {
+    display: flex;
+    align-items: center;
+}
+.cardImgWrapper {
+    width: 20%;
+    margin-right: 32px;
+}
+.cardImg {
+    width: 100%;
+    border-radius: 50%;
+}
+.otherInfor {
+    flex: 1;
+}
+.inforTitle {
+    font-weight: 600;
+}

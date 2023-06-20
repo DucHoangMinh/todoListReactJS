@@ -103,6 +103,8 @@ function addTask() {
             <div className="mb-4">
                 <Form.Label htmlFor="basic-url">Mô tả công việc</Form.Label>
                 <Form.Control
+                    as={'textarea'}
+                    rows={3}
                     aria-label="Username"
                     aria-describedby="basic-addon1"
                     value={taskDescrip}
@@ -140,6 +142,8 @@ function addTask() {
             <div className="mb-4">
                 <Form.Label htmlFor="basic-url">Ghi chú (nếu có)</Form.Label>
                 <Form.Control
+                    as={'textarea'}
+                    rows={3}
                     aria-label="Username"
                     aria-describedby="basics-addon1"
                     value={taskNote}
@@ -147,10 +151,10 @@ function addTask() {
                 />
             </div>
             <div className="d-flex justify-content-between">
-                <Button variant="success" onClick={handleBackButton}>
+                <Button variant="primary" onClick={handleBackButton}>
                     Quay về trang chủ
                 </Button>
-                <Button variant="primary" onClick={() => handleAddButton()}>
+                <Button variant="success" onClick={() => handleAddButton()}>
                     Thêm vào danh sách
                 </Button>
             </div>

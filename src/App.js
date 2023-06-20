@@ -9,6 +9,7 @@ import Home from './components/mainProgram/home.component';
 import Update from './components/mainProgram/update.component';
 import Login from './components/login/login.component';
 import Register from './components/login/register.component';
+import FirstPage from './components/mainProgram/firstPage.component';
 
 function handleLogOut() {
     localStorage.removeItem('userMail');
@@ -25,6 +26,7 @@ class App extends Component {
                     <Route path="/home/update/:slug" element={<Update />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
+                    <Route path="/" element={<FirstPage />} />
                 </Routes>
             </div>
         );
