@@ -18,7 +18,7 @@ function detailTask() {
     const [data, setData] = useState({});
     useEffect(function () {
         axios
-            .get('http://localhost:4000/userdata/detail/' + slug)
+            .get('https://todo-list-api-xi.vercel.app/userdata/detail/' + slug)
             .then((response) => {
                 setData(response.data);
             })

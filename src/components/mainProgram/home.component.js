@@ -49,14 +49,14 @@ function home() {
     //Hàm xử lý việc xác nhận đánh dấu là đã hoàn thành
     function handleFinish(data) {
         axios
-            .put('http://localhost:4000/userData/update/finish/' + data.slug, { finish: true })
+            .put('https://todo-list-api-xi.vercel.app/userData/update/finish/' + data.slug, { finish: true })
             .then((window.location.href = '/home'))
             .catch();
     }
     //Hàm xử lý việc xác nhận là muốn xóa
     function handleDelete(data) {
         axios
-            .get('http://localhost:4000/userData/delete/' + data.slug)
+            .get('https://todo-list-api-xi.vercel.app/userData/delete/' + data.slug)
             .then()
             .catch();
         setTimeout(function () {
@@ -138,7 +138,7 @@ function home() {
     //Lấy danh sách tất cả những công việc của người đó
     useEffect(function () {
         axios
-            .get('http://localhost:4000/userdata/tasklist/' + userMail)
+            .get('https://todo-list-api-xi.vercel.app/userdata/tasklist/' + userMail)
             .then((response) => {
                 setTaskList(response.data);
             })

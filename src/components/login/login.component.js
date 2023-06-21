@@ -17,7 +17,7 @@ function login() {
             setLogInMessage('Tài khoản và mật khẩu không được để trống !!!');
         } else {
             setLogInMessage('');
-            fetch('http://localhost:4000/userinfor')
+            fetch('https://todo-list-api-xi.vercel.app/userinfor')
                 .then(function (response) {
                     return response.json();
                 })

@@ -39,7 +39,7 @@ function register() {
 
     function handleOnChangeEmail(e) {
         setRegisterMessage('');
-        var api = 'http://localhost:4000/userinfor';
+        var api = 'https://todo-list-api-xi.vercel.app/userinfor';
         fetch(api)
             .then((reponse) => reponse.json())
             .then((userInfor) => {
@@ -92,7 +92,9 @@ function register() {
                 email: userMail,
                 password: userPass,
             };
-            axios.post('http://localhost:4000/userinfor/add', newUserInfor).then((window.location.href = '/home'));
+            axios
+                .post('https://todo-list-api-xi.vercel.app/userinfor/add', newUserInfor)
+                .then((window.location.href = '/home'));
             setUserName('');
             setReUserPass('');
             setUserPass('');

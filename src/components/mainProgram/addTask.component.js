@@ -125,7 +125,7 @@ function addTask() {
                 photoURL: imageURL,
             };
             axios
-                .post('http://localhost:4000/userData/add', newTask)
+                .post('https://todo-list-api-xi.vercel.app/userData/add', newTask)
                 .then((window.location.href = '/home'))
                 .catch((err) => console.log(err));
         } else {

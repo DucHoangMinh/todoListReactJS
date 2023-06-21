@@ -36,7 +36,7 @@ function update() {
     var slug = segments.pop();
     useEffect(function () {
         axios
-            .get('http://localhost:4000/userdata/detail/' + slug)
+            .get('https://todo-list-api-xi.vercel.app/userdata/detail/' + slug)
             .then((response) => {
                 const data = response.data;
                 setRecentName(data.name);
@@ -90,7 +90,7 @@ function update() {
             note: taskNote,
         };
         axios
-            .put('http://localhost:4000/userdata/update/' + slug, updateTask)
+            .put('https://todo-list-api-xi.vercel.app/userdata/update/' + slug, updateTask)
             .then((window.location.href = '/home')) //Gửi request xong thì chuyển hướng về trang chủ
             .catch((err) => console.log(err));
     }
