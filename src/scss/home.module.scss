@@ -7,6 +7,7 @@
 .taskListSelect {
     display: flex;
     list-style: none;
+    flex-wrap: wrap;
     font-size: 18px;
     text-align: center;
     align-items: center;
@@ -15,7 +16,6 @@
 }
 .taskListSelect li {
     padding: 8px 12px;
-    margin-right: 12px;
     border: 2px solid #4b8c61;
     border-radius: 8px;
 }
@@ -30,9 +30,7 @@
     color: #000;
     right: 0px !important;
     font-size: 18px;
-    position: absolute;
     padding: 8px 12px;
-    right: 0px;
     font-weight: 600;
     // color: #12ad2a;
     color: #4b8c61;
@@ -74,6 +72,7 @@
     color: #a1ce7a;
 }
 .homeFilterWrapper {
+    position: relative;
     padding: 20px 16px;
     display: flex;
     justify-content: space-between;
@@ -133,4 +132,35 @@
 }
 .footerContactItem svg {
     font-size: 32px;
+}
+//Responsive cho table
+@media (min-width: 740px) and (max-width: 1023px) {
+    .titleWrapper {
+        display: none;
+    }
+    .homeFilterWrapper {
+        display: block;
+    }
+}
+@media (max-width: 739px) {
+    .titleWrapper {
+        display: none;
+    }
+    .homeFilterWrapper {
+        display: block;
+    }
+    .footerWrapper p {
+        font-size: 12px;
+    }
+    .primary-button {
+        margin-bottom: 4px;
+    }
+    .update-button {
+        float: right;
+        margin-right: 0px !important;
+    }
+    .add-task-button {
+        position: relative;
+        flex: 1;
+    }
 }

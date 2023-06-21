@@ -186,7 +186,7 @@ function home() {
             <div className="container">
                 <ul class={`${style['taskListSelect']}`}>
                     <li
-                        class={`select-item  ${activeClass1 ? style.nowDisplay : ''}`}
+                        class={`select-item  ${activeClass1 ? style.nowDisplay : ''} col-lg-3 col-md-3 col-sm-3 col-4`}
                         onClick={() => {
                             setListState(1);
                             setActiveClass1(true);
@@ -199,7 +199,7 @@ function home() {
                         </a>
                     </li>
                     <li
-                        class={`select-item  ${activeClass2 ? style.nowDisplay : ''}`}
+                        class={`select-item  ${activeClass2 ? style.nowDisplay : ''} col-lg-3 col-md-3 col-sm-3 col-4`}
                         onClick={() => {
                             setListState(2);
                             setActiveClass1(false);
@@ -212,7 +212,7 @@ function home() {
                         </a>
                     </li>
                     <li
-                        class={`select-item  ${activeClass3 ? style.nowDisplay : ''}`}
+                        class={`select-item  ${activeClass3 ? style.nowDisplay : ''} col-lg-3 col-md-3 col-sm-3 col-4`}
                         onClick={() => {
                             setListState(3);
                             setActiveClass1(false);
@@ -224,7 +224,7 @@ function home() {
                             Đã hoàn thành
                         </a>
                     </li>
-                    <Link to="/home/add" class={`${style['add-task-button']}`}>
+                    <Link to="/home/add" class={`${style['add-task-button']} col-lg-3 col-md-3 col-sm-3 col-12`}>
                         <span>Thêm nhiệm vụ</span>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -240,7 +240,7 @@ function home() {
                     </Link>
                 </ul>
                 <div className={`${style.homeFilterWrapper} ${listState === 1 ? '' : 'd-none'}`}>
-                    <div className={`${style.textFilterWrapper}`}>
+                    <div className={`${style.textFilterWrapper} col-sm-12 col-lg-8`}>
                         <label className={`${style.filterLabel}`}>Thời gian từ : </label>
                         <input
                             className={`${style.filterMonthInput}`}
@@ -259,7 +259,7 @@ function home() {
                             Hủy lọc
                         </button>
                     </div>
-                    <div className={`${style.selectFilterWrapper}`}>
+                    <div className={`${style.selectFilterWrapper} col-lg-4 col-sm-12`}>
                         <label className={`${style.filterLabel}`}>Phân loại : </label>
                         <select onChange={(e) => handleFilterType(e)}>
                             <option value="-1">Tất cả</option>
@@ -283,28 +283,35 @@ function home() {
                             <div class="card-body">
                                 <h5 class="card-title">{data.name}</h5>
                                 <p class="card-text">{data.description}</p>
-                                <Link to={`/home/detail/${data.slug}`} class={`btn ${style['primary-button']}`}>
+                                <Link
+                                    to={`/home/detail/${data.slug}`}
+                                    class={`btn ${style['primary-button']} col-lg-2 col-md-2 col-sm-5 col-5`}
+                                >
                                     Xem chi tiết
                                 </Link>
                                 <Link
                                     to={'/home/update/' + data.slug}
                                     //Nếu ở chỗ danh sách việc sắp tới thì mới hiển thị nút này
-                                    class={`btn ${listState === 1 ? '' : 'd-none'} update-btn  ${
-                                        style['primary-button']
-                                    }`}
+                                    class={`btn ${listState === 1 ? '' : 'd-none'}  ${style['primary-button']} ${
+                                        style['update-button']
+                                    } col-lg-2 col-md-2 col-sm-5 col-5`}
                                 >
-                                    Chỉnh sửa chi tiết
+                                    Chỉnh sửa
                                 </Link>
                                 <Link
                                     //Nếu ở danh sách những việc đã hoàn thành thì sẽ không hiển thị nút này nữa
-                                    class={`btn ${listState === 3 ? 'd-none' : ''} ${style['primary-button']}`}
+                                    class={`btn ${listState === 3 ? 'd-none' : ''} ${
+                                        style['primary-button']
+                                    } col-lg-2 col-md-2 col-sm-12 col-12
+                                    `}
                                     onClick={() => handleMarkFinish(data)}
                                 >
-                                    Đánh dấu đã hoàn thành
+                                    Đã hoàn thành
                                 </Link>
                                 <a
                                     href="#"
-                                    class={`btn btn-danger ${style['delete-button']}`}
+                                    class={`btn btn-danger ${style['delete-button']} 
+                                    col-lg-1 col-md-1 col-sm-12 col-12`}
                                     onClick={() => handleMarkDelete(data)}
                                 >
                                     Xóa

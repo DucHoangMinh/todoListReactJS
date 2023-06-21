@@ -128,6 +128,8 @@ function addTask() {
                 .post('http://localhost:4000/userData/add', newTask)
                 .then((window.location.href = '/home'))
                 .catch((err) => console.log(err));
+        } else {
+            window.location.href = '/home';
         }
     }
     //Xử lý mỗi khi thêm ảnh vào
