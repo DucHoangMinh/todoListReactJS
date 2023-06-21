@@ -73,6 +73,31 @@
     font-size: 24px;
     color: #a1ce7a;
 }
+.homeFilterWrapper {
+    padding: 20px 16px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    background-color: #aad187;
+    border-radius: 10px;
+}
+.textFilterWrapper {
+    display: block;
+}
+.selectFilterWrapper {
+    display: block;
+}
+.filterLabel {
+    font-size: 18px;
+    margin-right: 8px;
+}
+.filterMonthInput {
+    margin-right: 12px;
+}
+.filterMonthReset {
+    border: none;
+    background-color: #fff;
+}
 .primary-button {
     color: #fff;
     background-color: #aad187;
@@ -81,4 +106,31 @@
     color: #fff;
     background-color: #aad187;
     opacity: 0.8;
+}
+.homeFooter {
+    width: 100%;
+    background-color: #ccc;
+    height: 200px;
+    margin-top: 100px;
+    text-align: center;
+}
+.footerWrapper {
+    padding-top: 70px;
+}
+.footerTitle {
+}
+.footerTitle {
+}
+.footerContactItem {
+    text-decoration: none;
+    color: #000;
+    margin: 0px 4px;
+    cursor: pointer;
+    font-family: 'Helvetica Neue', Helvetica, Arial;
+}
+.footerContactItem :hover {
+    opacity: 0.8;
+}
+.footerContactItem svg {
+    font-size: 32px;
 }

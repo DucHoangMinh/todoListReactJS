@@ -15,14 +15,12 @@ function detailTask() {
     var segments = url.split('/');
     var slug = segments.pop();
     var taskTypeList = ['Không phân loại', 'Việc cá nhân', 'Việc nhà', 'Việc cơ quan'];
-    console.log(slug);
     const [data, setData] = useState({});
     useEffect(function () {
         axios
             .get('http://localhost:4000/userdata/detail/' + slug)
             .then((response) => {
                 setData(response.data);
-                console.log(response.data);
             })
             .catch();
     }, []);
@@ -46,11 +44,7 @@ function detailTask() {
                     </h5>
                     <div className={`card-body ${style.cardBody}`}>
                         <div className={`${style.cardImgWrapper}`}>
-                            <img
-                                className={`${style.cardImg}`}
-                                alt="Ảnh nhiệm vụ"
-                                src="https://media.istockphoto.com/id/1059266342/vector/checklist-with-tick-marks-in-a-flat-style-questionnaire-on-a-clipboard-paper-successful.jpg?s=612x612&w=0&k=20&c=W7bqEYDcN1h0zgWAsk-3NAETPcANi5fQEoEZ_mvkwkk="
-                            ></img>
+                            <img className={`${style.cardImg}`} alt="Ảnh nhiệm vụ" src={data.photoURL}></img>
                         </div>
                         <div className={`${style.otherInfor}`}>
                             <h4 class="card-title">

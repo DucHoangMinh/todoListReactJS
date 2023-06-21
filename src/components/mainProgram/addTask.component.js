@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { InputGroup, Form, Button, Modal } from 'react-bootstrap';
 import axios from 'axios';
 import style from '../../scss/add.module.scss';
+import { storage } from '../../firebase';
+import { ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage';
 
 function dateToString(date) {
     var month = String(date.getMonth() + 1).padStart(2, '0'); // Lấy tháng và thêm số 0 vào đầu nếu cần
@@ -25,8 +27,11 @@ function addTask() {
     const [taskDescrip, setTaskDescrip] = useState('');
     const [taskClassify, setTaskClassify] = useState('Không phân loại');
     const [taskDate, setTaskDate] = useState(new Date());
-    const [taskNote, setTaskNote] = useState('');
     const [modalMess, setModalMess] = useState('');
+    const [taskImage, setTaskImage] = useState(0);
+    const [imageURL, setImageURL] = useState(
+        'https://firebasestorage.googleapis.com/v0/b/my-simple-crud-f5b5c.appspot.com/o/files%2Fistockphoto-1059266342-612x612.jpg?alt=media&token=ab975821-2cc7-4a43-9cb0-3c9eadae363a',
+    );
 
     function MyVerticallyCenteredModal(props) {
         return (
@@ -58,6 +63,25 @@ function addTask() {
     function handleAddButton() {
         setModalMess(`Bạn có chắc chắn muốn thêm nhiệm vụ ${taskName} , hạn vào ngày ${dateToString(taskDate)} ?`);
         if (dataValid()) {
+            if (taskImage !== 0) {
+                const storageRef = ref(storage, `files/${taskImage.name}`);
+                const uploadTask = uploadBytesResumable(storageRef, taskImage);
+                uploadTask.on(
+                    'state_changed',
+                    (snapshot) => {
+                        const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+                    },
+                    (error) => {
+                        alert(error);
+                    },
+                    () => {
+                        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                            console.log(downloadURL);
+                            setImageURL(downloadURL);
+                        });
+                    },
+                );
+            }
             setModalShow(true);
         }
     }
@@ -68,25 +92,49 @@ function addTask() {
         }
         return true;
     }
+    function loadImgToFireBase() {
+        if (taskImage !== 0) {
+            const storageRef = ref(storage, `files/${taskImage.name}`);
+            const uploadTask = uploadBytesResumable(storageRef, taskImage);
+            uploadTask.on(
+                'state_changed',
+                (snapshot) => {
+                    const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+                },
+                (error) => {
+                    alert(error);
+                },
+                () => {
+                    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                        console.log(downloadURL);
+                        setImageURL(downloadURL);
+                    });
+                },
+            );
+        }
+    }
     function handleConfirm() {
         if (modalMess.includes('Bạn có chắc chắn muốn thêm nhiệm vụ')) {
+            console.log('load xong');
             var newTask = {
                 name: taskName,
                 description: taskDescrip,
                 taskType: taskClassify,
                 expireDay: taskDate,
-                note: taskNote,
                 owner: localStorage.getItem('userMail'),
+                photoURL: imageURL,
             };
             axios
                 .post('http://localhost:4000/userData/add', newTask)
-                .then()
+                .then((window.location.href = '/home'))
                 .catch((err) => console.log(err));
         }
-        setTimeout(function () {
-            window.location.href = '/home';
-        }, 500);
     }
+    //Xử lý mỗi khi thêm ảnh vào
+    function handleAddImage(e) {
+        setTaskImage(e.target.files[0]);
+    }
+    //Xử lý đẩy ảnh lên firebase storage và lấy về URL
     return (
         <div className="add-task-form mt-5 container">
             <h1 class={`display-4 mb-4 ${style.addHeading}`}>Thêm công việc vào danh sách quản lý</h1>
@@ -139,17 +187,15 @@ function addTask() {
                     onChange={(e) => setTaskDate(stringToDate(e.target.value))}
                 ></input>
             </div>
-            <div className="mb-4">
-                <Form.Label htmlFor="basic-url">Ghi chú (nếu có)</Form.Label>
+            {/* <div className="mb-4">
+                <Form.Label htmlFor="basic-url">Thêm ảnh gợi nhớ (nếu có)</Form.Label>
                 <Form.Control
-                    as={'textarea'}
-                    rows={3}
+                    type="file"
                     aria-label="Username"
                     aria-describedby="basics-addon1"
-                    value={taskNote}
-                    onChange={(e) => setTaskNote(e.target.value)}
+                    onChange={(e) => handleAddImage(e)}
                 />
-            </div>
+            </div> */}
             <div className="d-flex justify-content-between">
                 <Button variant="primary" onClick={handleBackButton}>
                     Quay về trang chủ
