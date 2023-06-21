@@ -50,18 +50,18 @@ function home() {
     function handleFinish(data) {
         axios
             .put('https://todo-list-api-xi.vercel.app/userData/update/finish/' + data.slug, { finish: true })
-            .then((window.location.href = '/home'))
-            .catch();
-    }
-    //Hàm xử lý việc xác nhận là muốn xóa
-    function handleDelete(data) {
-        axios
-            .get('https://todo-list-api-xi.vercel.app/userData/delete/' + data.slug)
             .then()
             .catch();
         setTimeout(function () {
             window.location.href = '/home';
         }, 500);
+    }
+    //Hàm xử lý việc xác nhận là muốn xóa
+    function handleDelete(data) {
+        axios
+            .get('https://todo-list-api-xi.vercel.app/userData/delete/' + data.slug)
+            .then((window.location.href = '/home'))
+            .catch();
     }
     function handleAccept(data) {
         modalMess.includes('Xác nhận nhiệm vụ') ? handleFinish(data) : handleDelete(data);

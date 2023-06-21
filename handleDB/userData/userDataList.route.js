@@ -40,7 +40,7 @@ userDataRoute.put('/update/finish/:slug', function (req, res) {
         .catch((err) => console.log(err));
 });
 //Xử lý update nhiệm vụ
-userDataRoute.put('/update/:slug', function (req, res) {
+userDataRoute.get('/update/:slug', function (req, res) {
     userDataListModel
         .updateOne(
             { slug: req.params.slug },

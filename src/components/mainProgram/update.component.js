@@ -90,9 +90,12 @@ function update() {
             note: taskNote,
         };
         axios
-            .put('https://todo-list-api-xi.vercel.app/userdata/update/' + slug, updateTask)
-            .then((window.location.href = '/home')) //Gửi request xong thì chuyển hướng về trang chủ
+            .get('https://todo-list-api-xi.vercel.app/userdata/update/' + slug, updateTask)
+            .then() //Gửi request xong thì chuyển hướng về trang chủ
             .catch((err) => console.log(err));
+        setTimeout(function () {
+            window.location.href = '/home';
+        }, 500);
     }
     function handleAccept() {
         modalMess.includes('Quay về trang chủ') ? handleBack() : handleUpdate();

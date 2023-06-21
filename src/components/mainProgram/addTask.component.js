@@ -126,8 +126,11 @@ function addTask() {
             };
             axios
                 .post('https://todo-list-api-xi.vercel.app/userData/add', newTask)
-                .then((window.location.href = '/home'))
+                .then()
                 .catch((err) => console.log(err));
+            setTimeout(function () {
+                window.location.href = '/home';
+            }, 500);
         } else {
             window.location.href = '/home';
         }
