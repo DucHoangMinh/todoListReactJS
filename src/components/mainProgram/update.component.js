@@ -95,7 +95,7 @@ function update() {
             .catch((err) => console.log(err));
         setTimeout(function () {
             window.location.href = '/home';
-        }, 500);
+        }, 5000);
     }
     function handleAccept() {
         modalMess.includes('Quay về trang chủ') ? handleBack() : handleUpdate();

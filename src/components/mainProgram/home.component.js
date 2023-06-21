@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react-hooks/rules-of-hooks */
-import { Nav, Modal, Button } from 'react-bootstrap';
+import { Nav, Modal, Button, Dropdown } from 'react-bootstrap';
 import axios from 'axios';
 import { Form, Link, Route, Routes } from 'react-router-dom';
 import addTask from './addTask.component';
@@ -171,7 +171,19 @@ function home() {
     return (
         <div>
             <div className={style['home-header']}>
-                <div className={style['backgroudWrapper']}>
+                <div className={`${style.header}`}>
+                    <Dropdown>
+                        <Dropdown.Toggle className={`${style.headerDropDown}`} id="dropdown-basic">
+                            Dropdown Button
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu>
+                            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
+                </div>
+                <div className={style.backgroudWrapper}>
                     <img
                         className={style['backgroundImage']}
                         src="https://firebasestorage.googleapis.com/v0/b/my-simple-crud-f5b5c.appspot.com/o/files%2Fhome-bkg.jpg?alt=media&token=b3bd6ef4-74a8-4c25-b99c-c615e1486f83"
