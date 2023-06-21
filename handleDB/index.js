@@ -28,4 +28,7 @@ app.use('/userdata', userDataRoute);
 app.listen(PORT, function () {
     console.log('Server is running on Port:', PORT);
 });
+app.get('/', function (req, res) {
+    res.send('Tạo API thành công');
+});
 module.exports = app;
