@@ -27,6 +27,6 @@ userInforRoute.get('/get/:slug', function (req, res) {
     userInforModel
         .find({ email: req.params.slug })
         .lean()
-        .then((userdate) => res.json(userdate.name));
+        .then((userdate) => res.json(userdate));
 });
 module.exports = userInforRoute;
