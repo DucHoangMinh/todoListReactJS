@@ -22,5 +22,11 @@ userInforRoute.route('/add').post(function (req, res) {
             res.status(400).send('unable to save to database');
         });
 });
-
+//Trả về tên người dùng
+userInforRoute.get('/get/:slug', function (req, res) {
+    userInforModel
+        .find({ email: req.params.slug })
+        .lean()
+        .then((userdate) => res.json(userdate.name));
+});
 module.exports = userInforRoute;

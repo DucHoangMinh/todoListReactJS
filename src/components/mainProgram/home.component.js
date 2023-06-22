@@ -23,6 +23,7 @@ function dateToMonthYear(date) {
 }
 function home() {
     const [taskList, setTaskList] = useState([]);
+    const [userName, setUserInfor] = useState('');
     const [listState, setListState] = useState(1);
     const [modalShow, setModalShow] = useState(false);
     const [modalMess, setModalMess] = useState('');
@@ -36,6 +37,26 @@ function home() {
     const [filterSelect, setFilterSelect] = useState(-1);
 
     var myCart = document.getElementsByClassName('myCard');
+    const userMail = localStorage.getItem('userMail');
+    //Lấy danh sách tất cả những công việc của người đó
+    useEffect(function () {
+        const getLink = 'https://todo-list-api-xi.vercel.app/userdata/tasklist/';
+        axios
+            .get(getLink + userMail)
+            .then((response) => {
+                setTaskList(response.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }, []);
+    useEffect(function () {
+        const getUserInfor = 'https://todo-list-api-xi.vercel.app/userinfor/get/';
+        axios
+            .get(getUserInfor + userMail)
+            .then((response) => console.log(response.data))
+            .catch((err) => console.log(err));
+    }, []);
     function handleMarkFinish(data) {
         setModalData(data);
         setModalMess('Xác nhận nhiệm vụ ' + data.name + ' này đã hoàn thành?');
@@ -118,7 +139,6 @@ function home() {
         setStartMonthFilter(dateToMonthYear(new Date()));
         resetDislayItem();
     }
-    const userMail = localStorage.getItem('userMail');
     function MyVerticallyCenteredModal(props) {
         return (
             <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
@@ -135,17 +155,6 @@ function home() {
             </Modal>
         );
     }
-    //Lấy danh sách tất cả những công việc của người đó
-    useEffect(function () {
-        axios
-            .get('https://todo-list-api-xi.vercel.app/userdata/tasklist/' + userMail)
-            .then((response) => {
-                setTaskList(response.data);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }, []);
     //Sắp xếp lại các danh sách theo thứ tự ngày tháng
     if (taskList.length > 1) {
         taskList.sort(function (a, b) {
