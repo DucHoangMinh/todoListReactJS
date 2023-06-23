@@ -20,20 +20,29 @@ Mật khẩu : test123
 
 ## Hướng dẫn sử dụng
 
-Màn hình chính :
+### Màn hình chính :
+
 ![](./readme/giao_dien_chinh.png)
 
 -   "Trong tương lai" là danh sách những công việc sắp tới mà bạn cần hoàn thành
 -   "Chưa hoàn thành" là danh sách những công việc trong quá khứ mà bạn chưa hoàn thành
 -   "Đã hoàn thành" là tổng hợp danh sách những công việc mà bạn đã hoàn thành"
-    Phần filter :
-    ![](./readme/filter.png)
+
+### Phần filter :
+
+![](./readme/filter.png)
+
 -   "Trong tương lai" là danh sách những công việc sắp tới mà bạn cần hoàn thành
 -   "Chưa hoàn thành" là danh sách những công việc trong quá khứ mà bạn chưa hoàn thành
 -   "Đã hoàn thành" là tổng hợp danh sách những công việc mà bạn đã hoàn thành"
 -   Bạn cũng có thể lọc danh sách công việc theo ngày tháng và loại công việc
-    Phần tóm tắt một công việc :
-    ![](./readme/component.png)
+
+### Phần tóm tắt một công việc :
+
+![](./readme/component.png)
+
 -   Tại đây,bạn có thể thực hiện các thao tác với công việc đó
-    Thêm một công việc mới :
-    ![](./readme/add_component.png)
+
+### Thêm một công việc mới :
+
+![](./readme/add_component.png)
