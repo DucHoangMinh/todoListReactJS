@@ -92,9 +92,7 @@ function register() {
                 email: userMail,
                 password: userPass,
             };
-            axios
-                .post('https://todo-list-api-xi.vercel.app/userinfor/add', newUserInfor)
-                .then((window.location.href = '/home'));
+            axios.post('https://todo-list-api-xi.vercel.app/userinfor/add', newUserInfor).then();
             setUserName('');
             setReUserPass('');
             setUserPass('');
@@ -103,6 +101,9 @@ function register() {
         } else {
             setRegisterMessage('Vui lòng nhập đầy đủ các trường !!!');
         }
+        setTimeout(function () {
+            window.location.href = '/home';
+        }, 500);
     }
     return (
         <div>

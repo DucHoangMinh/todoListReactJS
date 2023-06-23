@@ -1,11 +1,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react-hooks/rules-of-hooks */
-import { Nav, Modal, Button, Dropdown } from 'react-bootstrap';
+import { Nav, Modal, Button, Dropdown, DropdownButton } from 'react-bootstrap';
 import axios from 'axios';
 import { Form, Link, Route, Routes } from 'react-router-dom';
 import addTask from './addTask.component';
 import style from '../../scss/home.module.scss';
 import DetailTask from './detailTask.component';
+import React from 'react';
 
 const { useState, useEffect } = require('react');
 
@@ -44,6 +45,7 @@ function home() {
         axios
             .get(getLink + userMail)
             .then((response) => {
+                console.log(response.data);
                 setTaskList(response.data);
             })
             .catch((err) => {
@@ -54,7 +56,7 @@ function home() {
         const getUserInfor = 'https://todo-list-api-xi.vercel.app/userinfor/get/';
         axios
             .get(getUserInfor + userMail)
-            .then((response) => console.log(response.data))
+            .then((response) => setUserInfor(response.data[0].name))
             .catch((err) => console.log(err));
     }, []);
     function handleMarkFinish(data) {
@@ -139,6 +141,10 @@ function home() {
         setStartMonthFilter(dateToMonthYear(new Date()));
         resetDislayItem();
     }
+    function handleLogout() {
+        localStorage.removeItem('userMail');
+        window.location.href = '/';
+    }
     function MyVerticallyCenteredModal(props) {
         return (
             <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
@@ -177,18 +183,36 @@ function home() {
     window.onload = function () {
         const updateButton = document.getElementsByClassName('update-btn');
     };
+    const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
+        <span
+            ref={ref}
+            onClick={(e) => {
+                e.preventDefault();
+                onClick(e);
+            }}
+            className={`${style.dropDownTitle}`}
+        >
+            <div className={`${style.dropDownImg}`}>
+                <img src="https://fullstack.edu.vn/static/media/fallback-avatar.155cdb2376c5d99ea151.jpg"></img>
+            </div>
+            {children}
+        </span>
+    ));
+
     return (
         <div>
             <div className={style['home-header']}>
                 <div className={`${style.header}`}>
-                    <Dropdown>
-                        <Dropdown.Toggle className={`${style.headerDropDown}`} id="dropdown-basic">
-                            Dropdown Button
+                    <Dropdown className={`${style.dropDown}`}>
+                        <Dropdown.Toggle as={CustomToggle} className={`${style.headerDropDown}`}>
+                            {userName}
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
-                            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                            <Dropdown.Item href="#/action-1">Quản lý tài khoản</Dropdown.Item>
                             <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                            <Dropdown.Item onClick={handleLogout} style={{ borderTop: '1px solid #ccc' }}>
+                                Đăng xuất
+                            </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                 </div>
@@ -199,7 +223,7 @@ function home() {
                         alt="Ảnh nền trang chủ"
                     ></img>
                     <div className={style['titleWrapper']}>
-                        <h3>Xin chào {userMail}</h3>
+                        <h3>Xin chào {userName}</h3>
                         <p>Đây là danh sách công việc của bạn</p>
                     </div>
                 </div>

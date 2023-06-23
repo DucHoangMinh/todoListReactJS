@@ -4,11 +4,47 @@
     position: fixed;
     top: 0px;
     background-color: #4b8c61;
+    z-index: 1;
+}
+.dropDown {
+    display: block;
+    width: 180px;
+    float: right;
+    display: flex;
+    align-items: center;
+    height: 46px;
+}
+.dropDown:hover {
+    cursor: pointer;
+}
+.dropDownTitle {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+}
+.dropDownImg {
+    height: 34px;
+    margin-right: 8px;
+}
+.dropDownImg img {
+    height: 34px;
+    border-radius: 50%;
 }
 .headerDropDown {
     background-color: transparent;
     border: none;
     float: right;
+    display: block;
+}
+.headerDropDown:hover {
+    background-color: #4b8c61;
+    color: #fff;
+}
+.headerDropDown:active {
+    background-color: #4b8c61;
+    color: #fff;
 }
 .primary-button {
     margin-right: 8px !important;
