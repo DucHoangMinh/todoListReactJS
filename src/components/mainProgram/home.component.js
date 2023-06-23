@@ -198,23 +198,30 @@ function home() {
             {children}
         </span>
     ));
-
     return (
         <div>
             <div className={style['home-header']}>
+                <div className="container"></div>
                 <div className={`${style.header}`}>
-                    <Dropdown className={`${style.dropDown}`}>
-                        <Dropdown.Toggle as={CustomToggle} className={`${style.headerDropDown}`}>
-                            {userName}
-                        </Dropdown.Toggle>
-                        <Dropdown.Menu>
-                            <Dropdown.Item href="#/action-1">Quản lý tài khoản</Dropdown.Item>
-                            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                            <Dropdown.Item onClick={handleLogout} style={{ borderTop: '1px solid #ccc' }}>
-                                Đăng xuất
-                            </Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
+                    <div className={`container ${style.temp}`}>
+                        <div>
+                            <Link to={'/home'} className={`${style.headerHomeTitle}`}>
+                                Todo List
+                            </Link>
+                        </div>
+                        <Dropdown className={`${style.dropDown}`}>
+                            <Dropdown.Toggle as={CustomToggle} className={`${style.headerDropDown}`}>
+                                {userName}
+                            </Dropdown.Toggle>
+                            <Dropdown.Menu>
+                                <Dropdown.Item href="#/action-1">Quản lý tài khoản</Dropdown.Item>
+                                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                                <Dropdown.Item onClick={handleLogout} style={{ borderTop: '1px solid #ccc' }}>
+                                    Đăng xuất
+                                </Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    </div>
                 </div>
                 <div className={style.backgroudWrapper}>
                     <img

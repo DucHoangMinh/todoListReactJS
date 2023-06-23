@@ -92,9 +92,9 @@ function update() {
             .put('https://todo-list-api-xi.vercel.app/userData/update/' + slug, updateTask)
             .then() //Gửi request xong thì chuyển hướng về trang chủ
             .catch((err) => console.log(err));
-        // setTimeout(function () {
-        //     window.location.href = '/home';
-        // }, 500);
+        setTimeout(function () {
+            window.location.href = '/home';
+        }, 500);
     }
     function handleAccept() {
         modalMess.includes('Quay về trang chủ') ? handleBack() : handleUpdate();

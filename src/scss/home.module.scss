@@ -6,6 +6,11 @@
     background-color: #4b8c61;
     z-index: 1;
 }
+.temp {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 .dropDown {
     display: block;
     width: 180px;
@@ -23,6 +28,15 @@
     color: #fff;
     font-weight: 600;
     font-size: 16px;
+}
+.headerHomeTitle {
+    color: #fff;
+    font-weight: 600;
+    font-size: 24px;
+    margin-bottom: 0px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
 }
 .dropDownImg {
     height: 34px;
