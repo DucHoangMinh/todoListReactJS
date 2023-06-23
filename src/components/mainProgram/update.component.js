@@ -87,15 +87,14 @@ function update() {
             description: taskDescrip,
             expireDay: taskDate,
             taskType: taskClassify,
-            note: taskNote,
         };
         axios
-            .get('https://todo-list-api-xi.vercel.app/userdata/update/' + slug, updateTask)
+            .put('https://todo-list-api-xi.vercel.app/userData/update/' + slug, updateTask)
             .then() //Gửi request xong thì chuyển hướng về trang chủ
             .catch((err) => console.log(err));
-        setTimeout(function () {
-            window.location.href = '/home';
-        }, 5000);
+        // setTimeout(function () {
+        //     window.location.href = '/home';
+        // }, 500);
     }
     function handleAccept() {
         modalMess.includes('Quay về trang chủ') ? handleBack() : handleUpdate();
@@ -149,15 +148,6 @@ function update() {
                     max="2026-12-31"
                     onChange={(e) => setTaskDate(stringToDate(e.target.value))}
                 ></input>
-            </div>
-            <div className="mb-4">
-                <Form.Label htmlFor="basic-url">Ghi chú (nếu có)</Form.Label>
-                <Form.Control
-                    aria-label="Username"
-                    aria-describedby="basics-addon1"
-                    value={taskNote}
-                    onChange={(e) => setTaskNote(e.target.value)}
-                />
             </div>
             <div className="d-flex justify-content-between">
                 <Button variant="primary" onClick={handleSendBack}>
