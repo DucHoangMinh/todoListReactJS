@@ -1,11 +1,26 @@
 import { Link } from 'react-router-dom';
+import style from '../../scss/firstpage.module.scss';
+import { useEffect } from 'react';
 
 function firstPage() {
-    if (localStorage.getItem('userMail') !== null) {
-        window.location.href = '/home';
-    }
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useEffect(function () {
+        const loader = document.getElementById('loader');
+        setTimeout(function () {
+            loader.classList.add('d-none');
+        }, 2000);
+        if (localStorage.getItem('userMail') !== null) {
+            window.location.href = '/home';
+        }
+    }, []);
+
     return (
         <div className="container">
+            <div className={`${style.loaderWrapper}`} id="loader">
+                <span className={`${style.loader}`}>
+                    <span className={`${style.loaderInner}`}></span>
+                </span>
+            </div>
             <div
                 style={{
                     textAlign: 'center',
