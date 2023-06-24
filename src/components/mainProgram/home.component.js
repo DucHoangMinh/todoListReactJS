@@ -54,7 +54,7 @@ function home() {
         const loader = document.getElementById('loader');
         setTimeout(function () {
             loader.classList.add('d-none');
-        }, 1500);
+        }, 2000);
     }, []);
     useEffect(function () {
         const getUserInfor = 'https://todo-list-api-xi.vercel.app/userinfor/get/';
