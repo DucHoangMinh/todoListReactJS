@@ -51,6 +51,10 @@ function home() {
             .catch((err) => {
                 console.log(err);
             });
+        const loader = document.getElementById('loader');
+        setTimeout(function () {
+            loader.classList.add('d-none');
+        }, 1500);
     }, []);
     useEffect(function () {
         const getUserInfor = 'https://todo-list-api-xi.vercel.app/userinfor/get/';
@@ -132,7 +136,6 @@ function home() {
             }
         }
     }
-    function handleCheckValidTime() {}
     function handleFilterType(e) {
         setFilterSelect(e.target.value);
     }
@@ -180,9 +183,6 @@ function home() {
     var finishedTask = taskList.filter(function (taskItem) {
         return taskItem.finish == true;
     });
-    window.onload = function () {
-        const updateButton = document.getElementsByClassName('update-btn');
-    };
     const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
         <span
             ref={ref}
@@ -200,6 +200,11 @@ function home() {
     ));
     return (
         <div>
+            <div className={`${style.loaderWrapper}`} id="loader">
+                <span className={`${style.loader}`}>
+                    <span className={`${style.loaderInner}`}></span>
+                </span>
+            </div>
             <div className={style['home-header']}>
                 <div className="container"></div>
                 <div className={`${style.header}`}>

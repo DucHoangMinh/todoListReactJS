@@ -115,7 +115,6 @@ function addTask() {
     }
     function handleConfirm() {
         if (modalMess.includes('Bạn có chắc chắn muốn thêm nhiệm vụ')) {
-            console.log('load xong');
             var newTask = {
                 name: taskName,
                 description: taskDescrip,

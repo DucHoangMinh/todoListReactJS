@@ -27,6 +27,7 @@ function register() {
     function handleOnChangeName(e) {
         setUserName(e.target.value);
         setRegisterMessage('');
+        setInputNameMessage('');
         const inputName = document.getElementById('inputName');
         inputName.onblur = () => {
             if (!inputName.value) {
